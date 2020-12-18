@@ -1,12 +1,18 @@
 #include <boost/python.hpp>
+#include <boost/python/numpy.hpp>
 
-char const* greet()
+namespace py = boost::python;
+namespace np = py::numpy;
+
+np::ndarray greet()
 {
-  return "hello, world";
+  return np::zeros(py::make_tuple(3, 3), np::dtype::get_builtin<int>());
+  // return "hello, world";
 }
 
 BOOST_PYTHON_MODULE(CompiledNN)
 {
-  using namespace boost::python;
-  def("greet", greet);
+  Py_Initialize();
+  np::initialize();
+  py::def("greet", greet);
 }
