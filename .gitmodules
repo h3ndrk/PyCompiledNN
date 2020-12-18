@@ -1,0 +1,3 @@
+[submodule "CompiledNN"]
+	path = CompiledNN
+	url = https://github.com/bhuman/CompiledNN.git
