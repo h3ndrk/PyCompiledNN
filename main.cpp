@@ -12,7 +12,11 @@ struct ModelWrapper
   NeuralNetwork::Model model;
 
   ModelWrapper() = default;
-  explicit ModelWrapper(const std::string &file) : model{file} {}
+
+  explicit ModelWrapper(const py::object &file)
+  {
+    load(file);
+  }
 
   void setInputUInt8(std::size_t index)
   {
@@ -29,9 +33,9 @@ struct ModelWrapper
     model.clear();
   }
 
-  void load(const std::string &file)
+  void load(const py::object &file)
   {
-    model.load(file);
+    model.load(py::extract<std::string>(py::str{file}));
   }
 };
 
@@ -104,7 +108,7 @@ BOOST_PYTHON_MODULE(PyCompiledNN)
   np::initialize();
 
   py::class_<ModelWrapper, boost::noncopyable>("Model")
-      .def(py::init<std::string>())
+      .def(py::init<py::object>())
       .def("setInputUInt8", &ModelWrapper::setInputUInt8)
       .def("isInputUInt8", &ModelWrapper::isInputUInt8)
       .def("clear", &ModelWrapper::clear)
