@@ -49,8 +49,13 @@ class BuildCMakeExt(setuptools.command.build_ext.build_ext):
 
 setuptools.setup(
     name='PyCompiledNN',
-    version='0.0.1',
+    use_scm_version=True,
+    setup_requires=['setuptools_scm'],
     packages=[],
+    description='Python Bindings for CompiledNN',
+    long_description=open('./README.md', 'r').read(),
+    long_description_content_type='text/markdown',
+    license='MIT',
     ext_modules=[CMakeExtension(name='PyCompiledNN')],
     cmdclass={
         'build_ext': BuildCMakeExt,
