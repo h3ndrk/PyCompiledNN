@@ -19,6 +19,7 @@ jobs:
         git clone https://github.com/boostorg/boost.git
         cd boost
         git switch --detach $(git describe --tags $(git rev-list --tags --max-count=1))
+        git submodule update --init
         ./bootstrap.sh --prefix=/usr
         sudo ./b2 install
     - uses: actions/checkout@master
