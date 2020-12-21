@@ -9,18 +9,18 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
-        apt-get update
-        apt-get install --no-install-recommends --yes build-essential git libprotobuf-dev protobuf-compiler wget
-        rm -Rf /var/lib/apt/lists/*
+        sudo apt-get update
+        sudo apt-get install --no-install-recommends --yes build-essential git libprotobuf-dev protobuf-compiler wget
+        sudo rm -Rf /var/lib/apt/lists/*
         cd /tmp
         wget -q "$(curl -s https://api.github.com/repos/Kitware/CMake/releases/latest | grep browser_download_url | grep Linux-x86_64.tar.gz | cut -d : -f 2,3 | tr -d \" | xargs)"
-        tar --extract --keep-old-files --directory /usr --strip-components=1 --file cmake-*-Linux-x86_64.tar.gz
+        sudo tar --extract --keep-old-files --directory /usr --strip-components=1 --file cmake-*-Linux-x86_64.tar.gz
         cd /tmp
         git clone https://github.com/boostorg/boost.git
         cd boost
         git switch --detach $(git describe --tags $(git rev-list --tags --max-count=1))
         ./bootstrap.sh --prefix=/usr
-        ./b2 install
+        sudo ./b2 install
     - uses: actions/checkout@master
     - name: Set up Python
       uses: actions/setup-python@v2
