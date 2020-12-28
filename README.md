@@ -9,7 +9,7 @@ This package requires the following dependencies:
 - Python 3 (with NumPy) (Ubuntu/Debian: *python3*, *python3-numpy*)
 - Boost Python (with NumPy) (Ubuntu/Debian: *libboost-python-dev*, *libboost-numpy-dev*)
 - HDF5 (Ubuntu/Debian: *libhdf5-dev*)
-- Protocol Buffers (both compiler and library) (Ubuntu/Debian: *libprotobuf-dev*)
+- Protocol Buffers (both compiler and library) (Ubuntu/Debian: *protobuf-compiler*, *libprotobuf-dev*)
 
 *PyCompiledNN* can be installed via `pip install git+https://github.com/h3ndrk/PyCompiledNN.git`.
 
