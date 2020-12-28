@@ -6,26 +6,25 @@ This repository contains Python bindings for [CompiledNN](https://github.com/bhu
 
 This package requires the following dependencies:
 
-- Python 3 (with NumPy)
-- Boost Python (with NumPy)
-- HDF5
-- Protocol Buffers (both compiler and library)
+- Python 3 (with NumPy) (Ubuntu/Debian: *python3*, *python3-numpy*)
+- Boost Python (with NumPy) (Ubuntu/Debian: *libboost-python-dev*, *libboost-numpy-dev*)
+- HDF5 (Ubuntu/Debian: *libhdf5-dev*)
+- Protocol Buffers (both compiler and library) (Ubuntu/Debian: *libprotobuf-dev*)
 
 *PyCompiledNN* can be installed via `pip install git+https://github.com/h3ndrk/PyCompiledNN.git`.
 
 ## Development
 
-1. Make sure all submodules are cloned.
-2. Create build directory: `mkdir build`
-3. Change into build directory: `cd build`
-4. Configure project: `cmake ..`
-5. Build project: `cmake --build .`
-6. Observe the file `PyCompiledNN.so` in the `build` directory
+1. Make sure all submodules are cloned: `git submodule update --init`
+2. Configure project: `cmake -Bbuild .`
+3. Build project: `cmake --build build`
+4. Observe the file `PyCompiledNN.so` in the `build` directory
 
 For testing, you should be able to import the module in Python without errors:
 
-1. Run an interactive Python REPL: `python`
-2. Import the module: `import PyCompiledNN`
+1. Change into build directory: `cd build`
+2. Run an interactive Python REPL: `python`
+3. Import the module: `import PyCompiledNN`
 
 ## Example
 
